@@ -55,8 +55,8 @@
             this.btnDemandeSupprDev = new System.Windows.Forms.Button();
             this.btnDemandeModifDev = new System.Windows.Forms.Button();
             this.grbLesDeveloppeurs = new System.Windows.Forms.GroupBox();
-            this.dgvDeveloppeurs = new System.Windows.Forms.DataGridView();
             this.CBoxFiltreProfil = new System.Windows.Forms.ComboBox();
+            this.dgvDeveloppeurs = new System.Windows.Forms.DataGridView();
             this.grbPwd.SuspendLayout();
             this.grbDeveloppeur.SuspendLayout();
             this.grbLesDeveloppeurs.SuspendLayout();
@@ -334,6 +334,23 @@
             this.grbLesDeveloppeurs.TabStop = false;
             this.grbLesDeveloppeurs.Text = "les développeurs";
             // 
+            // CBoxFiltreProfil
+            // 
+            this.CBoxFiltreProfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBoxFiltreProfil.FormattingEnabled = true;
+            this.CBoxFiltreProfil.Items.AddRange(new object[] {
+            " ",
+            "admin",
+            "stagiaire",
+            "designer",
+            "dev-front",
+            "dev-back"});
+            this.CBoxFiltreProfil.Location = new System.Drawing.Point(259, 231);
+            this.CBoxFiltreProfil.Name = "CBoxFiltreProfil";
+            this.CBoxFiltreProfil.Size = new System.Drawing.Size(221, 21);
+            this.CBoxFiltreProfil.TabIndex = 4;
+            this.CBoxFiltreProfil.SelectedIndexChanged += new System.EventHandler(this.CBoxFiltreProfil_SelectedIndexChanged);
+            // 
             // dgvDeveloppeurs
             // 
             this.dgvDeveloppeurs.AllowUserToAddRows = false;
@@ -349,22 +366,6 @@
             this.dgvDeveloppeurs.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDeveloppeurs.Size = new System.Drawing.Size(581, 206);
             this.dgvDeveloppeurs.TabIndex = 0;
-            // 
-            // CBoxFiltreProfil
-            // 
-            this.CBoxFiltreProfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.CBoxFiltreProfil.FormattingEnabled = true;
-            this.CBoxFiltreProfil.Items.AddRange(new object[] {
-            "",
-            "admin",
-            "stagiaire",
-            "designer",
-            "dev-front",
-            "dev-back"});
-            this.CBoxFiltreProfil.Location = new System.Drawing.Point(259, 231);
-            this.CBoxFiltreProfil.Name = "CBoxFiltreProfil";
-            this.CBoxFiltreProfil.Size = new System.Drawing.Size(221, 21);
-            this.CBoxFiltreProfil.TabIndex = 4;
             // 
             // FrmHabilitations
             // 

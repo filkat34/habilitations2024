@@ -49,6 +49,7 @@ namespace habilitations2024.view
         {
             InitializeComponent();
             Init();
+            CBoxFiltreProfil.SelectedIndex = 0;
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace habilitations2024.view
         /// </summary>
         private void RemplirListeDeveloppeurs()
         {
-            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = controller.GetLesDeveloppeurs(CBoxFiltreProfil.Text);
             bdgDeveloppeurs.DataSource = lesDeveloppeurs;
             dgvDeveloppeurs.DataSource = bdgDeveloppeurs;
             dgvDeveloppeurs.Columns["iddeveloppeur"].Visible = false;
@@ -318,6 +319,11 @@ namespace habilitations2024.view
                 controller.DelProfil(profil);
                 RemplirListeProfils();
             }
+        }
+
+        private void CBoxFiltreProfil_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RemplirListeDeveloppeurs();
         }
     }
 }
