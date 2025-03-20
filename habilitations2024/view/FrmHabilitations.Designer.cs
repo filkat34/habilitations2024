@@ -48,14 +48,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtNom = new System.Windows.Forms.TextBox();
             this.grbDeveloppeur = new System.Windows.Forms.GroupBox();
+            this.btnAddProfil = new System.Windows.Forms.Button();
+            this.btnDelProfil = new System.Windows.Forms.Button();
+            this.txtProfil = new System.Windows.Forms.TextBox();
             this.btnDemandeChangePwd = new System.Windows.Forms.Button();
             this.btnDemandeSupprDev = new System.Windows.Forms.Button();
             this.btnDemandeModifDev = new System.Windows.Forms.Button();
             this.grbLesDeveloppeurs = new System.Windows.Forms.GroupBox();
             this.dgvDeveloppeurs = new System.Windows.Forms.DataGridView();
-            this.txtProfil = new System.Windows.Forms.TextBox();
-            this.btnDelProfil = new System.Windows.Forms.Button();
-            this.btnAddProfil = new System.Windows.Forms.Button();
+            this.CBoxFiltreProfil = new System.Windows.Forms.ComboBox();
             this.grbPwd.SuspendLayout();
             this.grbDeveloppeur.SuspendLayout();
             this.grbLesDeveloppeurs.SuspendLayout();
@@ -262,6 +263,33 @@
             this.grbDeveloppeur.TabStop = false;
             this.grbDeveloppeur.Text = "ajouter un développeur";
             // 
+            // btnAddProfil
+            // 
+            this.btnAddProfil.Location = new System.Drawing.Point(521, 94);
+            this.btnAddProfil.Name = "btnAddProfil";
+            this.btnAddProfil.Size = new System.Drawing.Size(78, 23);
+            this.btnAddProfil.TabIndex = 13;
+            this.btnAddProfil.Text = "ajouter";
+            this.btnAddProfil.UseVisualStyleBackColor = true;
+            this.btnAddProfil.Click += new System.EventHandler(this.BtnAddProfil_Click);
+            // 
+            // btnDelProfil
+            // 
+            this.btnDelProfil.Location = new System.Drawing.Point(521, 69);
+            this.btnDelProfil.Name = "btnDelProfil";
+            this.btnDelProfil.Size = new System.Drawing.Size(78, 23);
+            this.btnDelProfil.TabIndex = 12;
+            this.btnDelProfil.Text = "supprimer";
+            this.btnDelProfil.UseVisualStyleBackColor = true;
+            this.btnDelProfil.Click += new System.EventHandler(this.BtnDelProfil_Click);
+            // 
+            // txtProfil
+            // 
+            this.txtProfil.Location = new System.Drawing.Point(355, 96);
+            this.txtProfil.Name = "txtProfil";
+            this.txtProfil.Size = new System.Drawing.Size(159, 20);
+            this.txtProfil.TabIndex = 11;
+            // 
             // btnDemandeChangePwd
             // 
             this.btnDemandeChangePwd.Location = new System.Drawing.Point(168, 231);
@@ -294,6 +322,7 @@
             // 
             // grbLesDeveloppeurs
             // 
+            this.grbLesDeveloppeurs.Controls.Add(this.CBoxFiltreProfil);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeChangePwd);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeSupprDev);
             this.grbLesDeveloppeurs.Controls.Add(this.btnDemandeModifDev);
@@ -321,32 +350,21 @@
             this.dgvDeveloppeurs.Size = new System.Drawing.Size(581, 206);
             this.dgvDeveloppeurs.TabIndex = 0;
             // 
-            // txtProfil
+            // CBoxFiltreProfil
             // 
-            this.txtProfil.Location = new System.Drawing.Point(355, 96);
-            this.txtProfil.Name = "txtProfil";
-            this.txtProfil.Size = new System.Drawing.Size(159, 20);
-            this.txtProfil.TabIndex = 11;
-            // 
-            // btnDelProfil
-            // 
-            this.btnDelProfil.Location = new System.Drawing.Point(521, 69);
-            this.btnDelProfil.Name = "btnDelProfil";
-            this.btnDelProfil.Size = new System.Drawing.Size(78, 23);
-            this.btnDelProfil.TabIndex = 12;
-            this.btnDelProfil.Text = "supprimer";
-            this.btnDelProfil.UseVisualStyleBackColor = true;
-            this.btnDelProfil.Click += new System.EventHandler(this.BtnDelProfil_Click);
-            // 
-            // btnAddProfil
-            // 
-            this.btnAddProfil.Location = new System.Drawing.Point(521, 94);
-            this.btnAddProfil.Name = "btnAddProfil";
-            this.btnAddProfil.Size = new System.Drawing.Size(78, 23);
-            this.btnAddProfil.TabIndex = 13;
-            this.btnAddProfil.Text = "ajouter";
-            this.btnAddProfil.UseVisualStyleBackColor = true;
-            this.btnAddProfil.Click += new System.EventHandler(this.BtnAddProfil_Click);
+            this.CBoxFiltreProfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.CBoxFiltreProfil.FormattingEnabled = true;
+            this.CBoxFiltreProfil.Items.AddRange(new object[] {
+            "",
+            "admin",
+            "stagiaire",
+            "designer",
+            "dev-front",
+            "dev-back"});
+            this.CBoxFiltreProfil.Location = new System.Drawing.Point(259, 231);
+            this.CBoxFiltreProfil.Name = "CBoxFiltreProfil";
+            this.CBoxFiltreProfil.Size = new System.Drawing.Size(221, 21);
+            this.CBoxFiltreProfil.TabIndex = 4;
             // 
             // FrmHabilitations
             // 
@@ -398,6 +416,7 @@
         private System.Windows.Forms.Button btnAddProfil;
         private System.Windows.Forms.Button btnDelProfil;
         private System.Windows.Forms.TextBox txtProfil;
+        private System.Windows.Forms.ComboBox CBoxFiltreProfil;
     }
 }
 
