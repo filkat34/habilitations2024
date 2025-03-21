@@ -52,21 +52,28 @@ namespace habilitations2024.dal.Tests
         [TestMethod()]
         public void GetLesDeveloppeursTest()
         {
-            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
-            Assert.AreNotEqual(0, lesDeveloppeurs.Count, "devrait réussir : au moins 1 développeur dans la BDD");
+            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
+            Assert.AreEqual(20, lesDeveloppeurs.Count, "Tous les dévéloppeurs n'ont pas été récupérés.");
+        }
+
+        [TestMethod()]
+        public void GetLesDeveloppeursTest1()
+        {
+            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs("stagiaire");
+            Assert.AreEqual(6, lesDeveloppeurs.Count, "Tous les stagiaires n'ont pas été récupérés.");
         }
 
         [TestMethod()]
         public void DelDepveloppeurTest()
         {
             BeginTransaction();
-            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
             int nbBeforeDelete = lesDeveloppeurs.Count;
             if (nbBeforeDelete > 0)
             {
                 Developpeur dev = lesDeveloppeurs[0];
                 developpeurAccess.DelDepveloppeur(dev);
-                lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
+                lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
                 Developpeur devDel = lesDeveloppeurs.Find(obj => obj.Iddeveloppeur.Equals(dev.Iddeveloppeur));
                 Assert.IsNull(devDel, "devrait réussir : un développeur supprimé");
                 int nbAfterDelete = lesDeveloppeurs.Count;
@@ -79,7 +86,7 @@ namespace habilitations2024.dal.Tests
         public void AddDeveloppeurTest()
         {
             BeginTransaction();
-            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
             int nbBeforeInsert = lesDeveloppeurs.Count;
             string nom = "nvnom";
             string prenom = "nvprenom";
@@ -88,7 +95,7 @@ namespace habilitations2024.dal.Tests
             Profil profil = new Profil(1, "stagiaire");
             Developpeur dev = new Developpeur(0, nom, prenom, tel, mail, profil);
             developpeurAccess.AddDeveloppeur(dev);
-            lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
+            lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
             int nbAfterInsert = lesDeveloppeurs.Count;
             Developpeur devAdd = lesDeveloppeurs.Find(obj => obj.Nom.Equals(nom)
                 && obj.Prenom.Equals(prenom)
@@ -105,7 +112,7 @@ namespace habilitations2024.dal.Tests
         public void UpdateDeveloppeurTest()
         {
             BeginTransaction();
-            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
             int nbBeforeUpdate = lesDeveloppeurs.Count;
             if (lesDeveloppeurs.Count > 0)
             {
@@ -117,7 +124,7 @@ namespace habilitations2024.dal.Tests
                 Profil profil = new Profil(1, "stagiaire");
                 Developpeur newDev = new Developpeur(dev.Iddeveloppeur, nom, prenom, tel, mail, profil);
                 developpeurAccess.UpdateDeveloppeur(newDev);
-                lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
+                lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
                 int nbAfterUpdate = lesDeveloppeurs.Count;
                 Developpeur devUpdate = lesDeveloppeurs.Find(obj => obj.Iddeveloppeur == dev.Iddeveloppeur);
                 if (devUpdate != null)
@@ -143,7 +150,7 @@ namespace habilitations2024.dal.Tests
         public void UpdatePwdTest()
         {
             BeginTransaction();
-            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs();
+            List<Developpeur> lesDeveloppeurs = developpeurAccess.GetLesDeveloppeurs(" ");
             if (lesDeveloppeurs.Count > 0)
             {
                 Developpeur dev = lesDeveloppeurs[0];
